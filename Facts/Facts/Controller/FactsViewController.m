@@ -7,6 +7,7 @@
 //
 
 #import "FactsViewController.h"
+#import "FactsView.h"
 
 @interface FactsViewController ()
 
@@ -16,7 +17,8 @@
 
 - (id)init {
     if (self = [super init]) {
-        
+        self.view = [[FactsView alloc] init];
+        //self.view.backgroundColor = [UIColor redColor];
     }
     return(self);
 }
@@ -29,6 +31,11 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+// tell UIKit that you are using AutoLayout
++ (BOOL)requiresConstraintBasedLayout {
+    return YES;
 }
 
 @end

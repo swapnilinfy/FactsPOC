@@ -16,6 +16,8 @@
 		5CF5481D1ECAD56600A9FC1F /* FactsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CF5481C1ECAD56600A9FC1F /* FactsViewController.m */; };
 		5CF548231ECAD5EE00A9FC1F /* Fact.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CF548221ECAD5EE00A9FC1F /* Fact.m */; };
 		5CF548261ECAE00200A9FC1F /* FactsManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CF548251ECAE00200A9FC1F /* FactsManager.m */; };
+		5CF548291ECAF02700A9FC1F /* FactsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CF548281ECAF02700A9FC1F /* FactsView.m */; };
+		5CF548321ECB124100A9FC1F /* FactCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CF548311ECB124100A9FC1F /* FactCollectionViewCell.m */; };
 		91E73AEE1AE35CF4CE2E3718 /* libPods-FactsTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2B9A9F33605F7E72E177419C /* libPods-FactsTests.a */; };
 /* End PBXBuildFile section */
 
@@ -52,6 +54,10 @@
 		5CF548221ECAD5EE00A9FC1F /* Fact.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Fact.m; sourceTree = "<group>"; };
 		5CF548241ECAE00200A9FC1F /* FactsManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FactsManager.h; sourceTree = "<group>"; };
 		5CF548251ECAE00200A9FC1F /* FactsManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FactsManager.m; sourceTree = "<group>"; };
+		5CF548271ECAF02700A9FC1F /* FactsView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FactsView.h; sourceTree = "<group>"; };
+		5CF548281ECAF02700A9FC1F /* FactsView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FactsView.m; sourceTree = "<group>"; };
+		5CF548301ECB124100A9FC1F /* FactCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FactCollectionViewCell.h; sourceTree = "<group>"; };
+		5CF548311ECB124100A9FC1F /* FactCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FactCollectionViewCell.m; sourceTree = "<group>"; };
 		9DFB4B1E2AA9C8C357D1B434 /* Pods-Facts.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Facts.release.xcconfig"; path = "Pods/Target Support Files/Pods-Facts/Pods-Facts.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -141,6 +147,10 @@
 		5CF548131ECAD51500A9FC1F /* View */ = {
 			isa = PBXGroup;
 			children = (
+				5CF548271ECAF02700A9FC1F /* FactsView.h */,
+				5CF548281ECAF02700A9FC1F /* FactsView.m */,
+				5CF548301ECB124100A9FC1F /* FactCollectionViewCell.h */,
+				5CF548311ECB124100A9FC1F /* FactCollectionViewCell.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -393,8 +403,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5CF548321ECB124100A9FC1F /* FactCollectionViewCell.m in Sources */,
 				5CF548231ECAD5EE00A9FC1F /* Fact.m in Sources */,
 				5CF5481D1ECAD56600A9FC1F /* FactsViewController.m in Sources */,
+				5CF548291ECAF02700A9FC1F /* FactsView.m in Sources */,
 				5CF547F31ECAD1C500A9FC1F /* AppDelegate.m in Sources */,
 				5CF547F01ECAD1C500A9FC1F /* main.m in Sources */,
 				5CF5481A1ECAD53400A9FC1F /* Constants.m in Sources */,
@@ -518,6 +530,7 @@
 			baseConfigurationReference = 11C3EF667D3B96D7855A084E /* Pods-Facts.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				DEVELOPMENT_TEAM = H87G9N468S;
 				INFOPLIST_FILE = Facts/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -531,6 +544,7 @@
 			baseConfigurationReference = 9DFB4B1E2AA9C8C357D1B434 /* Pods-Facts.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				DEVELOPMENT_TEAM = H87G9N468S;
 				INFOPLIST_FILE = Facts/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
