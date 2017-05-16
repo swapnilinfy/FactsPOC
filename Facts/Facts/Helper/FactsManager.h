@@ -1,5 +1,5 @@
 //
-//  Constants.h
+//  FactsManager.h
 //  Facts
 //
 //  Created by Swapnil Patil on 5/16/17.
@@ -8,9 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
-@interface Constants : NSObject
+@interface FactsManager : NSObject
 
-//Server URL Constants
-extern NSString * const serverURL;
+@property(nonatomic, retain) NSArray * facts;
 
 @end

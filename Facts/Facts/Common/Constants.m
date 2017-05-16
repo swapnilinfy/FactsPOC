@@ -10,4 +10,6 @@
 
 @implementation Constants
 
+NSString * const serverURL = @"https://dl.dropboxusercontent.com/s/2iodh4vg0eortkl/facts.json";
+
 @end
