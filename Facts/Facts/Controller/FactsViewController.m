@@ -52,6 +52,7 @@ static NSString *factCellIdentifier = @"factcell";
     
     [self.view addSubview:factsCollectionView];
     [self.view addSubview:activityIndicator];
+    [factsCollectionView addSubview:refreshControl];
     
     [self.view setNeedsUpdateConstraints];
 }
@@ -60,6 +61,7 @@ static NSString *factCellIdentifier = @"factcell";
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     [factsCollectionView registerClass:[FactCollectionViewCell class] forCellWithReuseIdentifier:factCellIdentifier];
+    self.title = @"FactsPOC";
     [self loadData];
 }
 
@@ -100,6 +102,7 @@ static NSString *factCellIdentifier = @"factcell";
         if(!error) {
             [factsCollectionView reloadData];
             [activityIndicator stopAnimating];
+            [refreshControl endRefreshing];
         }
     }];
 }
@@ -148,7 +151,12 @@ static NSString *factCellIdentifier = @"factcell";
         }];
     }
     else {
-       factCell.factImageView.image = fact.factImage;
+        if (fact.factImage) {
+            factCell.factImageView.image = fact.factImage;
+        }
+        else {
+            factCell.factImageView.image = nil;
+        }
     }
 }
 

@@ -17,6 +17,5 @@
 @property(nonatomic, readonly) UIActivityIndicatorView *activityIndicatorView;
 
 - (void)setFact:(Fact *)fact;
-- (void)setFactImage:(NSString *)imageURL;
 
 @end
