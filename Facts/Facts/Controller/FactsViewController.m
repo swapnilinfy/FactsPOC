@@ -37,9 +37,9 @@ static NSString *factCellIdentifier = @"factcell";
 - (void)loadView {
     self.view = [[FactsView alloc] init];
     factsCollectionView = [[UICollectionView alloc] initWithFrame:self.view.frame collectionViewLayout:[[UICollectionViewFlowLayout alloc] init]];
+    factsCollectionView.backgroundColor = [UIColor whiteColor];
     factsCollectionView.delegate = self;
     factsCollectionView.dataSource = self;
-    [factsCollectionView registerClass:[FactCollectionViewCell class] forCellWithReuseIdentifier:factCellIdentifier];
     
     refreshControl = [[UIRefreshControl alloc] init];
     [refreshControl addTarget:self
@@ -52,20 +52,29 @@ static NSString *factCellIdentifier = @"factcell";
     [self.view addSubview:factsCollectionView];
     [self.view addSubview:activityIndicator];
     
-    [factsCollectionView mas_makeConstraints:^(MASConstraintMaker* make) {
-        make.edges.equalTo(self.view).with.insets(UIEdgeInsetsZero);
-    }];
+    [self.view setNeedsUpdateConstraints];
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    [factsCollectionView registerClass:[FactCollectionViewCell class] forCellWithReuseIdentifier:factCellIdentifier];
     [self loadData];
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)viewDidLayoutSubviews {
+    [factsCollectionView mas_remakeConstraints:^(MASConstraintMaker* make) {
+        make.edges.equalTo(self.view).with.insets(UIEdgeInsetsZero);
+    }];
+    
+    [activityIndicator mas_remakeConstraints:^(MASConstraintMaker *make) {
+        make.center.equalTo(factsCollectionView);
+    }];
 }
 
 #pragma mark - Custom Methods
@@ -98,7 +107,8 @@ static NSString *factCellIdentifier = @"factcell";
 #pragma mark - UICollectionViewDelegate
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath  {
-    return CGSizeMake(CGRectGetWidth(collectionView.frame), (CGRectGetHeight(collectionView.frame)/5));
+    //return CGSizeMake(CGRectGetWidth(collectionView.frame), (CGRectGetHeight(collectionView.frame)/5));
+    return CGSizeMake(200, 150);
 }
 
 

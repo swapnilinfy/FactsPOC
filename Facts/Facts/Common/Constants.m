@@ -10,6 +10,7 @@
 
 @implementation Constants
 
-NSString * const serverURL = @"https://dl.dropboxusercontent.com/s/2iodh4vg0eortkl/facts.json";
+NSString * const kServerURL = @"https://dl.dropboxusercontent.com/s/2iodh4vg0eortkl/facts.json";
+float const kCellPadding = 5.0;
 
 @end

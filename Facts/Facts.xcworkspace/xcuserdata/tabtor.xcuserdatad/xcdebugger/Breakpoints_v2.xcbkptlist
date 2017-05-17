@@ -22,22 +22,6 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Facts/Controller/FactsViewController.m"
-            timestampString = "516663574.150022"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "91"
-            endingLineNumber = "91"
-            landmarkName = "-collectionView:cellForItemAtIndexPath:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
@@ -57,14 +41,46 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Facts/Helper/FactsManager.m"
-            timestampString = "516662290.674608"
+            filePath = "Facts/View/FactCollectionViewCell.m"
+            timestampString = "516684636.211051"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "51"
-            endingLineNumber = "51"
-            landmarkName = "-getFactsWithCompletionHandler:"
+            startingLineNumber = "63"
+            endingLineNumber = "63"
+            landmarkName = "-updateConstraints"
             landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[FactCollectionViewCell updateConstraints]"
+                  moduleName = "Facts"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/tabtor/Documents/MyProjects/Infy/FactsPOC/Facts/Facts/View/FactCollectionViewCell.m"
+                  timestampString = "516684394.187505"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "60"
+                  endingLineNumber = "60"
+                  offsetFromSymbolStart = "51">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__43-[FactCollectionViewCell updateConstraints]_block_invoke"
+                  moduleName = "Facts"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/tabtor/Documents/MyProjects/Infy/FactsPOC/Facts/Facts/View/FactCollectionViewCell.m"
+                  timestampString = "516684394.190288"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "60"
+                  endingLineNumber = "60"
+                  offsetFromSymbolStart = "30">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -73,29 +89,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Facts/Controller/FactsViewController.m"
-            timestampString = "516664059.207996"
+            filePath = "Facts/View/FactCollectionViewCell.m"
+            timestampString = "516684776.744812"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "100"
-            endingLineNumber = "100"
-            landmarkName = "-collectionView:layout:sizeForItemAtIndexPath:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Facts/Helper/FactsManager.m"
-            timestampString = "516664176.272927"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "50"
-            endingLineNumber = "50"
-            landmarkName = "-getFactsWithCompletionHandler:"
+            startingLineNumber = "52"
+            endingLineNumber = "52"
+            landmarkName = "-setFact:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

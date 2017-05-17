@@ -11,6 +11,7 @@
 @interface Constants : NSObject
 
 //Server URL Constants
-extern NSString * const serverURL;
+extern NSString * const kServerURL;
+extern float const kCellPadding;
 
 @end

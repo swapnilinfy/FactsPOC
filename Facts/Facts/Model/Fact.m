@@ -13,14 +13,17 @@
 //Define the Mapping of JSON to your Object Model
 + (JSONKeyMapper *)keyMapper {
     return [[JSONKeyMapper alloc] initWithModelToJSONDictionary:@{
-                                                                  @"title": @"factTitle",
-                                                                  @"description": @"factDescription",
-                                                                  @"imageHref": @"factImageURL"
+                                                                  @"factTitle": @"title",
+                                                                  @"factDescription": @"description",
+                                                                  @"factImageURL": @"imageHref"
                                                                   }];
 }
 
 
 + (BOOL)propertyIsOptional:(NSString *)propertyName {
+    if ([propertyName isEqualToString:@"factTitle"]){
+        return NO;
+    }
     return YES;
 }
 

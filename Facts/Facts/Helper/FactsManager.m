@@ -32,7 +32,7 @@
     //Set Custom contenttype as the content type supported by JSON is custom
     serializer.acceptableContentTypes = [NSSet setWithObject:@"text/plain"];
     manager.responseSerializer = serializer;
-    NSURL *URL = [NSURL URLWithString: serverURL];
+    NSURL *URL = [NSURL URLWithString: kServerURL];
     NSURLRequest *request = [NSURLRequest requestWithURL:URL];
     
     NSURLSessionDataTask *dataTask = [manager dataTaskWithRequest:request
@@ -46,7 +46,10 @@
                                                         NSMutableArray *factsArray = [[NSMutableArray alloc] init];
                                                         NSError *jsonError = nil;
                                                         for(NSDictionary *factDictionary in factsDictionaryArray) {
-                                                            [factsArray addObject:[[Fact alloc] initWithDictionary:factDictionary error:&jsonError]];
+                                                            Fact *fact = [[Fact alloc] initWithDictionary:factDictionary error:&jsonError];
+                                                            if (fact) {
+                                                                [factsArray addObject:fact];
+                                                            }
                                                         }
                                                         _facts = factsArray;
                                                     }
