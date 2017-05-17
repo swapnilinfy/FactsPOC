@@ -39,6 +39,9 @@
         [self addSubview:_factDescriptionLabel];
         [self addSubview:_factImageView];
         
+        self.layer.borderColor = [UIColor blackColor].CGColor;
+        self.layer.borderWidth = 1.0;
+        
         [self setNeedsUpdateConstraints];
     }
     return(self);

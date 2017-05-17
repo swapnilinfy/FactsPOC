@@ -12,6 +12,7 @@
 #import "FactsManager.h"
 #import "View+MASAdditions.h"
 #import "Haneke.h"
+#import "Constants.h"
 
 static NSString *factCellIdentifier = @"factcell";
 
@@ -129,7 +130,9 @@ static NSString *factCellIdentifier = @"factcell";
         return CGSizeMake(200, 150);
     }
     else {
-        return CGSizeMake(fact.factImage.size.width, 105 + fact.factImage.size.height);
+        FactCollectionViewCell *factCell = (FactCollectionViewCell *)[collectionView cellForItemAtIndexPath:indexPath];
+        float heightAdjustment = factCell.factTitleLabel.frame.size.height + factCell.factDescriptionLabel.frame.size.height + (kCellPadding * 3);
+        return CGSizeMake(fact.factImage.size.width, heightAdjustment + fact.factImage.size.height);
     }
     
 }
