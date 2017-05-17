@@ -10,6 +10,8 @@
 
 @interface FactsManager : NSObject
 
-@property(nonatomic, retain) NSArray * facts;
+@property(nonatomic, retain) NSArray *facts;
+
+- (void)getFactsWithCompletionHandler:(void (^)(NSError *error))completionHandler;
 
 @end

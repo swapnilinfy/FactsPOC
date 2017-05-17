@@ -12,18 +12,24 @@
 
 @implementation FactsView
 
-//- (id)init {
-//    self = [super init];
-//    if (self) {}
-//    return(self);
-//}
-
+- (id)init {
+    self = [super init];
+    if (self) {
+        self.backgroundColor = [UIColor whiteColor];
+    }
+    return(self);
+}
 
 - (void)updateConstraints {
     [self mas_makeConstraints:^(MASConstraintMaker* make) {
         make.edges.equalTo(self.superview).with.insets(UIEdgeInsetsZero);
     }];
     [super updateConstraints];
+}
+
+// tell UIKit that you are using AutoLayout
++ (BOOL)requiresConstraintBasedLayout {
+    return YES;
 }
 
 

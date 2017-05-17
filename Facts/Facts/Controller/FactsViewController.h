@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface FactsViewController : UIViewController
+@interface FactsViewController : UIViewController <UICollectionViewDelegate, UICollectionViewDataSource>
 
 @end

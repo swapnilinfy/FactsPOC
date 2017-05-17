@@ -10,16 +10,25 @@
 
 #import "Constants.h"
 #import "FactsManager.h"
+#import "Fact.h"
 
 @implementation FactsManager
 
-@synthesize facts;
+@synthesize facts = _facts;
 
-- (void)getCountryInformation {
+- (id)init {
+    self = [super init];
+    if (self) {
+        _facts = [[NSArray alloc] init];
+    }
+    return(self);
+}
+
+- (void)getFactsWithCompletionHandler:(void (^)(NSError *error))completionHandler {
     
     NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
-    AFURLSessionManager * manager = [[AFURLSessionManager alloc] initWithSessionConfiguration:configuration];
-    AFHTTPResponseSerializer * serializer = [AFHTTPResponseSerializer serializer];
+    AFURLSessionManager *manager = [[AFURLSessionManager alloc] initWithSessionConfiguration:configuration];
+    AFHTTPResponseSerializer *serializer = [AFHTTPResponseSerializer serializer];
     //Set Custom contenttype as the content type supported by JSON is custom
     serializer.acceptableContentTypes = [NSSet setWithObject:@"text/plain"];
     manager.responseSerializer = serializer;
@@ -28,14 +37,21 @@
     
     NSURLSessionDataTask *dataTask = [manager dataTaskWithRequest:request
                                                 completionHandler:^(NSURLResponse *response, id responseObject, NSError *error) {
-                                                    if (error) {
-                                                        NSLog(@"Error: %@", error);
-                                                    } else {
+                                                    if (!error)  {
                                                         NSString *iso = [[NSString alloc] initWithData:responseObject encoding:NSISOLatin1StringEncoding];
                                                         NSData *dutf8 = [iso dataUsingEncoding:NSUTF8StringEncoding];
                                                         NSDictionary *responseDictionary = [NSJSONSerialization JSONObjectWithData:dutf8 options:NSJSONReadingMutableContainers error:nil];
                                                         
+                                                        NSArray *factsDictionaryArray = [responseDictionary objectForKey:@"rows"];
+                                                        NSMutableArray *factsArray = [[NSMutableArray alloc] init];
+                                                        NSError *jsonError = nil;
+                                                        for(NSDictionary *factDictionary in factsDictionaryArray) {
+                                                            [factsArray addObject:[[Fact alloc] initWithDictionary:factDictionary error:&jsonError]];
+                                                        }
+                                                        _facts = factsArray;
                                                     }
+                                                    
+                                                    completionHandler(error);
                                                 }];
     [dataTask resume];
 }

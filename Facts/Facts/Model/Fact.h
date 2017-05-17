@@ -11,8 +11,8 @@
 
 @interface Fact : JSONModel
 
-@property (nonatomic) NSString * factTitle;
-@property (nonatomic) NSString * factDescription;
-@property (nonatomic) NSString * factImageURL;
+@property (nonatomic) NSString *factTitle;
+@property (nonatomic) NSString *factDescription;
+@property (nonatomic) NSString *factImageURL;
 
 @end
