@@ -65,7 +65,6 @@
     }];
     
     [_factDescriptionLabel mas_updateConstraints:^(MASConstraintMaker* make) {
-        //make.top.equalTo(_factTitleLabel.mas_bottom).with.offset(kCellPadding);
         make.left.equalTo(self.mas_left).with.offset(kCellPadding);
         make.bottom.equalTo(_factImageView.mas_top).with.offset(-kCellPadding);
         make.right.equalTo(self.mas_right).with.offset(-kCellPadding);
@@ -73,11 +72,9 @@
     }];
     
     [_factImageView mas_updateConstraints:^(MASConstraintMaker* make) {
-        //make.top.equalTo(self.superview.mas_top).with.offset(kCellPadding);
         make.left.equalTo(self.mas_left).with.offset(kCellPadding);
         make.bottom.equalTo(self.mas_bottom).with.offset(-kCellPadding);
         make.right.equalTo(self.mas_right).with.offset(-kCellPadding);
-        //make.height.mas_equalTo(_factImageView.frame.size.height);
     }];
     
     [super updateConstraints];

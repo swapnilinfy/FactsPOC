@@ -18,6 +18,7 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    //Setting a custom viewcontroller
     self.window = [[UIWindow alloc] initWithFrame:UIScreen.mainScreen.bounds];
     FactsViewController* factsViewController = [[FactsViewController alloc] init];
     UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:factsViewController];

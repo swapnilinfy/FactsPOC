@@ -36,6 +36,7 @@ static NSString *factCellIdentifier = @"factcell";
     return(self);
 }
 
+//This method is required as we dont have a xib or storyboard
 - (void)loadView {
     self.view = [[FactsView alloc] init];
     factsCollectionView = [[UICollectionView alloc] initWithFrame:self.view.frame collectionViewLayout:[[UICollectionViewFlowLayout alloc] init]];
@@ -114,6 +115,7 @@ static NSString *factCellIdentifier = @"factcell";
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath  {
     Fact *fact = [factsManager.facts objectAtIndex:indexPath.row];
     if (fact.downloadRequired || !fact.factImage) {
+        //TODO: save in constants file
         return CGSizeMake(200, 150);
     }
     else {
