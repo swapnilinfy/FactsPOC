@@ -83,19 +83,6 @@ static NSString *factCellIdentifier = @"factcell";
 
 #pragma mark - Custom Methods
 
-- (UIImage *)getImageFormPath:(NSString *)path {
-    UIImage *image = nil;
-    NSFileManager *fileManger = [NSFileManager defaultManager];
-    NSArray *searchPaths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-    NSString *documentPath = [searchPaths objectAtIndex:0];
-    NSString *encodedFileName = [path stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]];
-    NSString *filePath = [documentPath stringByAppendingPathComponent:encodedFileName];
-    if ([fileManger fileExistsAtPath:filePath]) {
-        image = [UIImage imageWithContentsOfFile:filePath];
-    }
-    return image;
-}
-
 - (void)loadData {
     [self.view bringSubviewToFront:activityIndicator];
     [activityIndicator startAnimating];
@@ -139,7 +126,6 @@ static NSString *factCellIdentifier = @"factcell";
 
 //Lodaing the images on demand
 - (void)collectionView:(UICollectionView *)collectionView willDisplayCell:(UICollectionViewCell *)cell forItemAtIndexPath:(NSIndexPath *)indexPath {
-    
     
     Fact *fact = [factsManager.facts objectAtIndex:indexPath.row];
     FactCollectionViewCell *factCell = (FactCollectionViewCell *)cell;

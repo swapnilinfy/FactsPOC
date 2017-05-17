@@ -26,8 +26,9 @@
         
         _factDescriptionLabel = [[UILabel alloc] initWithFrame:CGRectZero];
         _factDescriptionLabel.textColor = [UIColor grayColor];
-        _factDescriptionLabel.numberOfLines = 3;
-        _factDescriptionLabel.minimumScaleFactor = 0.5;
+        _factDescriptionLabel.numberOfLines = 5;
+        _factDescriptionLabel.minimumScaleFactor = 0.1;
+        _factDescriptionLabel.adjustsFontSizeToFitWidth = YES;
         
         _factImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 70, 50)];
         _activityIndicatorView = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
@@ -60,7 +61,7 @@
         make.left.equalTo(self.mas_left).with.offset(kCellPadding);
         make.bottom.equalTo(_factDescriptionLabel.mas_top).with.offset(-kCellPadding);
         make.right.equalTo(self.mas_right).with.offset(-kCellPadding);
-        make.height.mas_equalTo(30);
+        make.height.mas_equalTo(20);
     }];
     
     [_factDescriptionLabel mas_updateConstraints:^(MASConstraintMaker* make) {
