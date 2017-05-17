@@ -13,5 +13,7 @@
 @property(nonatomic, retain) NSArray *facts;
 
 - (void)getFactsWithCompletionHandler:(void (^)(NSError *error))completionHandler;
+- (void)downloadImageFromURL:(NSString *)urlString
+       withCompletionHandler:(void (^)(UIImage *image, NSError *error))completionHandler;
 
 @end

@@ -10,6 +10,12 @@
 
 @implementation Fact
 
+@synthesize factImageURL;
+@synthesize factImage;
+@synthesize factTitle;
+@synthesize factDescription;
+@synthesize downloadRequired;
+
 //Define the Mapping of JSON to your Object Model
 + (JSONKeyMapper *)keyMapper {
     return [[JSONKeyMapper alloc] initWithModelToJSONDictionary:@{

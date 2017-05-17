@@ -11,11 +11,12 @@
 #import "FactsView.h"
 #import "FactsManager.h"
 #import "View+MASAdditions.h"
+#import "Haneke.h"
 
 static NSString *factCellIdentifier = @"factcell";
 
 @interface FactsViewController () {
- 
+    
     FactsManager *factsManager;
     
     UICollectionView *factsCollectionView;
@@ -79,6 +80,19 @@ static NSString *factCellIdentifier = @"factcell";
 
 #pragma mark - Custom Methods
 
+- (UIImage *)getImageFormPath:(NSString *)path {
+    UIImage *image = nil;
+    NSFileManager *fileManger = [NSFileManager defaultManager];
+    NSArray *searchPaths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *documentPath = [searchPaths objectAtIndex:0];
+    NSString *encodedFileName = [path stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]];
+    NSString *filePath = [documentPath stringByAppendingPathComponent:encodedFileName];
+    if ([fileManger fileExistsAtPath:filePath]) {
+        image = [UIImage imageWithContentsOfFile:filePath];
+    }
+    return image;
+}
+
 - (void)loadData {
     [self.view bringSubviewToFront:activityIndicator];
     [activityIndicator startAnimating];
@@ -107,15 +121,35 @@ static NSString *factCellIdentifier = @"factcell";
 #pragma mark - UICollectionViewDelegate
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath  {
-    //return CGSizeMake(CGRectGetWidth(collectionView.frame), (CGRectGetHeight(collectionView.frame)/5));
-    return CGSizeMake(200, 150);
+    Fact *fact = [factsManager.facts objectAtIndex:indexPath.row];
+    if (fact.downloadRequired || !fact.factImage) {
+        return CGSizeMake(200, 150);
+    }
+    else {
+        return CGSizeMake(fact.factImage.size.width, 105 + fact.factImage.size.height);
+    }
+    
 }
 
 //Lodaing the images on demand
 - (void)collectionView:(UICollectionView *)collectionView willDisplayCell:(UICollectionViewCell *)cell forItemAtIndexPath:(NSIndexPath *)indexPath {
+    
+    
     Fact *fact = [factsManager.facts objectAtIndex:indexPath.row];
     FactCollectionViewCell *factCell = (FactCollectionViewCell *)cell;
-    [factCell setFactImage:fact.factImageURL];
+
+    if (fact.downloadRequired) {
+        [factsManager downloadImageFromURL:fact.factImageURL withCompletionHandler:^(UIImage *image, NSError *error) {
+            if (image) {
+                fact.factImage = image;
+                [collectionView reloadItemsAtIndexPaths:@[indexPath]];
+            }
+            fact.downloadRequired = false;
+        }];
+    }
+    else {
+       factCell.factImageView.image = fact.factImage;
+    }
 }
 
 

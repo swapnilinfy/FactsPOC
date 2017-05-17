@@ -14,6 +14,7 @@
 @property(nonatomic, readonly) UILabel *factTitleLabel;
 @property(nonatomic, readonly) UILabel *factDescriptionLabel;
 @property(nonatomic, readonly) UIImageView *factImageView;
+@property(nonatomic, readonly) UIActivityIndicatorView *activityIndicatorView;
 
 - (void)setFact:(Fact *)fact;
 - (void)setFactImage:(NSString *)imageURL;
