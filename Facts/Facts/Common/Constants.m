@@ -11,6 +11,6 @@
 @implementation Constants
 
 NSString * const kServerURL = @"https://dl.dropboxusercontent.com/s/2iodh4vg0eortkl/facts.json";
-float const kCellPadding = 5.0;
+float const kCellPadding = 1.0;
 
 @end

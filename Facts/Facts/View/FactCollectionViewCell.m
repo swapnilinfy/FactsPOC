@@ -30,11 +30,11 @@
         _factDescriptionLabel.numberOfLines = 3;
         _factDescriptionLabel.backgroundColor = [UIColor blueColor];
         
-        _factImageView = [[UIImageView alloc] initWithFrame:CGRectZero];
+        _factImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 70, 50)];
         _factImageView.backgroundColor = [UIColor yellowColor];
         
-        self.contentView.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
-        self.contentView.translatesAutoresizingMaskIntoConstraints = YES;
+        //self.contentView.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
+        //self.contentView.translatesAutoresizingMaskIntoConstraints = YES;
         
         [self addSubview:_factTitleLabel];
         [self addSubview:_factDescriptionLabel];
@@ -48,7 +48,10 @@
 - (void)setFact:(Fact *)fact {
     _factTitleLabel.text = fact.factTitle;
     _factDescriptionLabel.text = fact.factDescription;
-    [_factImageView hnk_setImageFromURL:[NSURL URLWithString:fact.factImageURL] placeholder:nil success:^(UIImage *image) {
+}
+
+- (void)setFactImage:(NSString *)imageURL {
+    [_factImageView hnk_setImageFromURL:[NSURL URLWithString:imageURL] placeholder:nil success:^(UIImage *image) {
         _factImageView.image = image;
     } failure:^(NSError *error) {
         
@@ -68,12 +71,12 @@
     [_factDescriptionLabel mas_updateConstraints:^(MASConstraintMaker* make) {
         //make.top.equalTo(_factTitleLabel.mas_bottom).with.offset(kCellPadding);
         make.left.equalTo(self.mas_left).with.offset(kCellPadding);
-        make.bottom.equalTo(_factTitleLabel.mas_top).with.offset(-kCellPadding);
+        make.bottom.equalTo(_factImageView.mas_top).with.offset(-kCellPadding);
         make.right.equalTo(self.mas_right).with.offset(-kCellPadding);
         make.height.mas_equalTo(60);
     }];
 
-    [_factTitleLabel mas_updateConstraints:^(MASConstraintMaker* make) {
+    [_factImageView mas_updateConstraints:^(MASConstraintMaker* make) {
         //make.top.equalTo(self.superview.mas_top).with.offset(kCellPadding);
         make.left.equalTo(self.mas_left).with.offset(kCellPadding);
         make.bottom.equalTo(self.mas_bottom).with.offset(-kCellPadding);

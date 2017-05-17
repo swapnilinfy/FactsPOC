@@ -16,5 +16,6 @@
 @property(nonatomic, readonly) UIImageView *factImageView;
 
 - (void)setFact:(Fact *)fact;
+- (void)setFactImage:(NSString *)imageURL;
 
 @end

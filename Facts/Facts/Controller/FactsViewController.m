@@ -111,5 +111,12 @@ static NSString *factCellIdentifier = @"factcell";
     return CGSizeMake(200, 150);
 }
 
+//Lodaing the images on demand
+- (void)collectionView:(UICollectionView *)collectionView willDisplayCell:(UICollectionViewCell *)cell forItemAtIndexPath:(NSIndexPath *)indexPath {
+    Fact *fact = [factsManager.facts objectAtIndex:indexPath.row];
+    FactCollectionViewCell *factCell = (FactCollectionViewCell *)cell;
+    [factCell setFactImage:fact.factImageURL];
+}
+
 
 @end
