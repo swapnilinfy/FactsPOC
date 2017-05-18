@@ -23,6 +23,7 @@ static NSString *factCellIdentifier = @"factcell";
     UICollectionView *factsCollectionView;
     UIRefreshControl *refreshControl;
     UIActivityIndicatorView *activityIndicator;
+    UIButton *reloadButton;
 }
 
 @end
@@ -49,13 +50,22 @@ static NSString *factCellIdentifier = @"factcell";
     [refreshControl addTarget:self
                        action:@selector(loadData)
              forControlEvents:UIControlEventValueChanged];
-    [refreshControl layoutIfNeeded];
+    
+    reloadButton = [UIButton buttonWithType:UIButtonTypeSystem];
+    reloadButton.frame = CGRectMake(0, 0, 70, 50);
+    [reloadButton setTitle:@"Relaod" forState:UIControlStateNormal];
+    [reloadButton addTarget:self
+                     action:@selector(loadData)
+           forControlEvents:UIControlEventTouchUpInside];
+    reloadButton.titleLabel.textColor = [UIColor grayColor];
+    reloadButton.hidden = YES;
     
     activityIndicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
     activityIndicator.hidesWhenStopped = YES;
     
     [self.view addSubview:factsCollectionView];
     [self.view addSubview:activityIndicator];
+    [self.view addSubview:reloadButton];
     [factsCollectionView addSubview:refreshControl];
     
     [self.view setNeedsUpdateConstraints];
@@ -81,11 +91,16 @@ static NSString *factCellIdentifier = @"factcell";
     [activityIndicator mas_remakeConstraints:^(MASConstraintMaker *make) {
         make.center.equalTo(factsCollectionView);
     }];
+    
+    [reloadButton mas_remakeConstraints:^(MASConstraintMaker *make) {
+        make.center.equalTo(factsCollectionView);
+    }];
 }
 
 #pragma mark - Custom Methods
 
 - (void)loadData {
+    reloadButton.hidden = YES;
     [self.view bringSubviewToFront:activityIndicator];
     [activityIndicator startAnimating];
     [factsManager getFactsWithCompletionHandler:^(NSError *error) {
@@ -95,6 +110,8 @@ static NSString *factCellIdentifier = @"factcell";
                 [factsCollectionView reloadData];
             }
             else if ([[error localizedDescription] isEqualToString:@"The Internet connection appears to be offline."]) {
+                reloadButton.hidden = NO;
+                [self.view bringSubviewToFront:reloadButton];
                 UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"No Internet"
                                                                                          message:@"Please Connect to Internet!!"
                                                                                   preferredStyle:UIAlertControllerStyleAlert];
