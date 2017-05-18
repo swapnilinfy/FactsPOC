@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		14284305DBDD600064466832 /* libPods-Facts.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 47C10EE26A17F96B1D2890D3 /* libPods-Facts.a */; };
+		5CCA500E1ECD4956008E5C4B /* FactsAPITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CCA500D1ECD4956008E5C4B /* FactsAPITests.m */; };
 		5CF547F01ECAD1C500A9FC1F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CF547EF1ECAD1C500A9FC1F /* main.m */; };
 		5CF547F31ECAD1C500A9FC1F /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CF547F21ECAD1C500A9FC1F /* AppDelegate.m */; };
 		5CF547FB1ECAD1C500A9FC1F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5CF547FA1ECAD1C500A9FC1F /* Assets.xcassets */; };
@@ -37,6 +38,7 @@
 		2B9A9F33605F7E72E177419C /* libPods-FactsTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-FactsTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		47C10EE26A17F96B1D2890D3 /* libPods-Facts.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Facts.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5BC8D69C76393AD88E7C668D /* Pods-FactsTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FactsTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-FactsTests/Pods-FactsTests.release.xcconfig"; sourceTree = "<group>"; };
+		5CCA500D1ECD4956008E5C4B /* FactsAPITests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FactsAPITests.m; sourceTree = "<group>"; };
 		5CF547EB1ECAD1C500A9FC1F /* Facts.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Facts.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5CF547EF1ECAD1C500A9FC1F /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		5CF547F11ECAD1C500A9FC1F /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -140,6 +142,7 @@
 			children = (
 				5CF548081ECAD1C500A9FC1F /* FactsTests.m */,
 				5CF5480A1ECAD1C500A9FC1F /* Info.plist */,
+				5CCA500D1ECD4956008E5C4B /* FactsAPITests.m */,
 			);
 			path = FactsTests;
 			sourceTree = "<group>";
@@ -418,6 +421,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5CCA500E1ECD4956008E5C4B /* FactsAPITests.m in Sources */,
 				5CF548091ECAD1C500A9FC1F /* FactsTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

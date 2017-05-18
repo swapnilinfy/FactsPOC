@@ -26,10 +26,8 @@
 }
 
 - (void)testAPICall {
-    FactsManager *factManager = [[FactsManager alloc] init];
-    [factManager getFactsWithCompletionHandler:^(NSError *error) {
-        XCTAssert(error == nil, @"Seems that the URL is not working");
-    }];
+    
+    
 }
 
 - (void)testPerformanceExample {
