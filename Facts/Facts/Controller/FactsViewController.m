@@ -43,11 +43,13 @@ static NSString *factCellIdentifier = @"factcell";
     factsCollectionView.backgroundColor = [UIColor whiteColor];
     factsCollectionView.delegate = self;
     factsCollectionView.dataSource = self;
+    [factsCollectionView registerClass:[FactCollectionViewCell class] forCellWithReuseIdentifier:factCellIdentifier];
     
     refreshControl = [[UIRefreshControl alloc] init];
     [refreshControl addTarget:self
                        action:@selector(loadData)
              forControlEvents:UIControlEventValueChanged];
+    [refreshControl layoutIfNeeded];
     
     activityIndicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
     activityIndicator.hidesWhenStopped = YES;
@@ -62,7 +64,6 @@ static NSString *factCellIdentifier = @"factcell";
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    [factsCollectionView registerClass:[FactCollectionViewCell class] forCellWithReuseIdentifier:factCellIdentifier];
     self.title = @"FactsPOC";
     [self loadData];
 }
@@ -88,11 +89,25 @@ static NSString *factCellIdentifier = @"factcell";
     [self.view bringSubviewToFront:activityIndicator];
     [activityIndicator startAnimating];
     [factsManager getFactsWithCompletionHandler:^(NSError *error) {
-        if(!error) {
-            [factsCollectionView reloadData];
+        //Dispatch to main queue
+        dispatch_async(dispatch_get_main_queue(), ^(void){
+            if(!error) {
+                [factsCollectionView reloadData];
+            }
+            else if ([[error localizedDescription] isEqualToString:@"The Internet connection appears to be offline."]) {
+                UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"No Internet"
+                                                                                         message:@"Please Connect to Internet!!"
+                                                                                  preferredStyle:UIAlertControllerStyleAlert];
+                UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"Okay"
+                                                                       style:UIAlertActionStyleCancel
+                                                                     handler:^(UIAlertAction * _Nonnull action) {}];
+                [alertController addAction:cancelAction];
+                [self.navigationController presentViewController:alertController animated:YES completion:^{}];
+                
+            }
             [activityIndicator stopAnimating];
             [refreshControl endRefreshing];
-        }
+        });
     }];
 }
 
@@ -131,7 +146,7 @@ static NSString *factCellIdentifier = @"factcell";
     
     Fact *fact = [factsManager.facts objectAtIndex:indexPath.row];
     FactCollectionViewCell *factCell = (FactCollectionViewCell *)cell;
-
+    
     if (fact.downloadRequired) {
         [factsManager downloadImageFromURL:fact.factImageURL withCompletionHandler:^(UIImage *image, NSError *error) {
             if (image) {

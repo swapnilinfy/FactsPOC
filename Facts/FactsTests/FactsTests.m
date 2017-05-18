@@ -7,6 +7,7 @@
 //
 
 #import <XCTest/XCTest.h>
+#import "FactsManager.h"
 
 @interface FactsTests : XCTestCase
 
@@ -24,9 +25,11 @@
     [super tearDown];
 }
 
-- (void)testExample {
-    // This is an example of a functional test case.
-    // Use XCTAssert and related functions to verify your tests produce the correct results.
+- (void)testAPICall {
+    FactsManager *factManager = [[FactsManager alloc] init];
+    [factManager getFactsWithCompletionHandler:^(NSError *error) {
+        XCTAssert(error == nil, @"Seems that the URL is not working");
+    }];
 }
 
 - (void)testPerformanceExample {
