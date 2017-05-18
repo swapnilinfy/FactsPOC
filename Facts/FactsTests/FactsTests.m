@@ -7,9 +7,11 @@
 //
 
 #import <XCTest/XCTest.h>
-#import "FactsManager.h"
+#import "FactsViewController.h"
 
 @interface FactsTests : XCTestCase
+
+@property FactsViewController *factsViewController;
 
 @end
 
@@ -18,6 +20,7 @@
 - (void)setUp {
     [super setUp];
     // Put setup code here. This method is called before the invocation of each test method in the class.
+    _factsViewController = [[FactsViewController alloc] init];
 }
 
 - (void)tearDown {
@@ -25,16 +28,21 @@
     [super tearDown];
 }
 
-- (void)testAPICall {
+- (void)testViewController {
     
+    XCTAssertNotNil(_factsViewController, @"ViewController should not be a nil");
     
-}
-
-- (void)testPerformanceExample {
-    // This is an example of a performance test case.
-    [self measureBlock:^{
-        // Put the code you want to measure the time of here.
-    }];
+    //Checking for views added programtically
+    XCTAssertNotNil(_factsViewController.view, @"ViewController View should not be a nil");
+    NSArray *subviews = [_factsViewController.view subviews];
+    UICollectionView *collectionView = nil;
+    for (UIView *view in subviews) {
+        if (view.class == [UICollectionView class]) {
+            collectionView = (UICollectionView *)view;
+            break;
+        }
+    }
+    XCTAssertNotNil(collectionView, @"CollectionView should not be a nil");
 }
 
 @end
